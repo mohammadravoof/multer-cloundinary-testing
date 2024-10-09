@@ -25,7 +25,10 @@ const handleUpload = (req, res) => {
                 .status(500)
                 .json({ error: 'Upload failed', details: error });
         }
-        res.json({ url: result.secure_url }); // Respond with the URL of the uploaded image
+        res.json({
+            url: result.secure_url,
+            filename: result.original_filename,
+        }); // Respond with the URL of the uploaded image
     });
 
     // Pipe the buffer stream to the upload stream
